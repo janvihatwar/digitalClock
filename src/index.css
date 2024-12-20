@@ -1,0 +1,63 @@
+.clock-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 97.7vh;
+  width: 99vw;
+  background: radial-gradient(circle, #0f3460, #1a1a2e);
+  overflow: hidden;
+  font-family: 'Poppins', sans-serif;
+  color: #ffffff;
+}
+
+/* Minimized Background Clock */
+.clock-container::before {
+  content: attr(data-time);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 15vw; /* Reduced size for efficiency */
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.1); /* Fainter to not overpower the main clock */
+  white-space: nowrap;
+  z-index: 1;
+}
+
+/* Foreground Clock */
+.clock {
+  position: relative;
+  z-index: 2;
+  background: rgba(15, 52, 96, 0.85);
+  padding: 20px 40px;
+  border-radius: 15px;
+  box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.5);
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 600;
+  border: 2px solid #e94560;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.clock:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 12px 30px rgba(233, 69, 96, 0.8);
+}
+
+.clock span {
+  display: inline-block;
+  color: #ffffff;
+  text-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .clock-container::before {
+      font-size: 8vw; /* Smaller background clock for mobile */
+  }
+  .clock {
+      font-size: 2rem;
+      padding: 15px 30px;
+  }
+}
